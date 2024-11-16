@@ -83,11 +83,13 @@ class Ufo():
 
         self.rect.center = (self.ufo_pos.x, self.ufo_pos.y)
 
-    def draw_player(self, dt):
+    def draw_player(self, dt, state):
         """
             Draws ufo onto window
         """
-        self.update(dt)
+        if state:
+            self.update(dt)
+
         self.screen.blit(self.ufo,(self.ufo_pos.x - self.ufo.get_width() // 2, self.ufo_pos.y - self.ufo.get_width() // 2))
     
     def update_cpu(self,dt,ctr):
@@ -113,11 +115,13 @@ class Ufo():
 
         self.rect.center = (self.ufo_pos.x, self.ufo_pos.y)
 
-    def draw_cpu(self, dt, ctr):
+    def draw_cpu(self, dt, ctr, state):
         """
             Draws ufo onto window. Distances not hardcoded, that's just the center of the ufo
         """
-        self.update_cpu(dt, ctr)
+        if state:
+            self.update_cpu(dt, ctr)
+            
         self.screen.blit(self.ufo,(self.ufo_pos.x - self.ufo.get_width() // 2, self.ufo_pos.y - self.ufo.get_width() // 2))
 
     def collision_detection(self, ufo_b):
