@@ -3,7 +3,7 @@
 Project for Etown College CS Club Fall Coding Challenge 2024
 
 `
-git clone &&
+git clone https://github.com/ElijahWagner007/Tanks.git &&
 cd Tanks &&
 python main.py
 `
