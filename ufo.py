@@ -11,6 +11,7 @@ class Ufo():
         self.x = x
         self.y = y
         self.ufo = pg.transform.scale(pg.image.load("./assets/"+ ufo_type +".png").convert_alpha(), (60,60))
+        self.rect = self.ufo.get_rect()
         self.speed = 5
         self.screen = screen
 
@@ -80,6 +81,8 @@ class Ufo():
         self.screen_collision()        
         self.ufo_pos += self.ufo_vel + 0.5 * self.ufo_accel
 
+        self.rect.center = (self.ufo_pos.x, self.ufo_pos.y)
+
     def draw_player(self, dt):
         """
             Draws ufo onto window
@@ -108,6 +111,7 @@ class Ufo():
         self.cpu_screen_collision()
         self.ufo_pos += self.ufo_vel + 0.5 * self.ufo_accel
 
+        self.rect.center = (self.ufo_pos.x, self.ufo_pos.y)
 
     def draw_cpu(self, dt, ctr):
         """
@@ -115,3 +119,6 @@ class Ufo():
         """
         self.update_cpu(dt, ctr)
         self.screen.blit(self.ufo,(self.ufo_pos.x - self.ufo.get_width() // 2, self.ufo_pos.y - self.ufo.get_width() // 2))
+
+    def collision_detection(self, ufo_b):
+        return self.rect.colliderect(ufo_b.rect)

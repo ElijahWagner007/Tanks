@@ -41,8 +41,7 @@ while running:
 
     p1_ufo.draw_player(dt)
     enemy_ufo.draw_cpu(dt, ctr)
-
-
+    
     # Updates display
     pg.display.flip() 
     
